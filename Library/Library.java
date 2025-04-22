@@ -1,9 +1,10 @@
+import java.util.ArrayList;
+
 public class Library {
     // Add the missing implementation to this class
     static String hours = "Libraries are open daily from 9am to 5pm.";
     String address;
-    Book[] books = new Book[4];
-    int nextIndex = 0;
+    ArrayList<Book> books = new ArrayList<Book>();
 
     // Create a new library
     public Library(String libraryAddress)
@@ -13,8 +14,7 @@ public class Library {
 
     public void addBook(Book book)
     {
-        books[nextIndex] = book;
-        nextIndex += 1;
+        books.add(book);
     }
 
     public static void printOpeningHours()
@@ -29,13 +29,13 @@ public class Library {
 
     public void borrowBook(String title)
     {
-        for (int i = 0; i < books.length; i++)
+        for (Book book : books)
         {
-            if (books[i] != null && books[i].getTitle().equals(title))
+            if (book.getTitle().equals(title))
             {
-                if (!books[i].isBorrowed())
+                if (!book.isBorrowed())
                 {
-                    books[i].borrowed();
+                    book.borrowed();
                     System.out.println("You successfully borrowed " + title);
                     return;
                 }
@@ -52,14 +52,14 @@ public class Library {
 
     public void printAvailableBooks()
     {
-        for (int i = 0; i < books.length; i++)
+        for (Book book : books)
         {
-            if (books[i] != null && !books[i].isBorrowed())
+            if (!book.isBorrowed())
             {
-                System.out.println(books[i].getTitle());
+                System.out.println(book.getTitle());
             }
         }
-        if (nextIndex == 0)
+        if (books.isEmpty())
         {
             System.out.println("No book in catalog");
         }
@@ -67,11 +67,11 @@ public class Library {
 
     public void returnBook(String title)
     {
-        for (int i = 0; i < books.length; i++)
+        for (Book book : books)
         {
-            if (books[i].getTitle().equals(title) && books[i].isBorrowed())
+            if (book.getTitle().equals(title) && book.isBorrowed())
             {
-                books[i].returned();
+                book.returned();
                 System.out.println("You successfully returned " + title);
             }
         }
