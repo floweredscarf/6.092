@@ -14,5 +14,47 @@ class Marathon {
         for (int i = 0; i < names.length; i++) {
             System.out.println(names[i] + ": " + times[i]);
         }
+
+        int minIndex = getMinIndex(times);
+        int secondMinIndex = getSecondMinIndex(times);
+        System.out.println("The fastest runner is " + names[minIndex] + ": " + times[minIndex]);
+        System.out.println("The second fastest runner is " + names[secondMinIndex] + ": " + times[secondMinIndex]);
+    }
+
+    public static int getMinIndex(int[] values)
+    {
+        int minValue = Integer.MAX_VALUE;
+        int minIndex = -1;
+
+        for (int i = 0; i < values.length; i++)
+        {
+            if (values[i] < minValue)
+            {
+                minValue = values[i];
+                minIndex = i;
+            }
+        }
+
+        return minIndex;
+    }
+
+    public static int getSecondMinIndex(int[] values)
+    {
+        int secondIdx = -1;
+        int minIdx = getMinIndex(values);
+
+        for (int i = 0; i < values.length; i++)
+        {
+            if (i == minIdx)
+            {
+                continue;
+            }
+            if (secondIdx == -1 || values[i] < values[secondIdx])
+            {
+                secondIdx = i;
+            }
+        }
+
+        return secondIdx;
     }
 } 
