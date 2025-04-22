@@ -1,5 +1,81 @@
 public class Library {
     // Add the missing implementation to this class
+    static String hours = "Libraries are open daily from 9am to 5pm.";
+    String address;
+    Book[] books = new Book[4];
+    int nextIndex = 0;
+
+    // Create a new library
+    public Library(String libraryAddress)
+    {
+        address = libraryAddress;
+    }
+
+    public void addBook(Book book)
+    {
+        books[nextIndex] = book;
+        nextIndex += 1;
+    }
+
+    public static void printOpeningHours()
+    {
+        System.out.println(hours);
+    }
+
+    public void printAddress()
+    {
+        System.out.println(address);
+    }
+
+    public void borrowBook(String title)
+    {
+        for (int i = 0; i < books.length; i++)
+        {
+            if (books[i] != null && books[i].getTitle().equals(title))
+            {
+                if (!books[i].isBorrowed())
+                {
+                    books[i].borrowed();
+                    System.out.println("You successfully borrowed " + title);
+                    return;
+                }
+                else
+                {
+                    System.out.println("Sorry, this book is already borrowed.");
+                    return;
+                }
+            }
+        }
+        System.out.println("Sorry, this book is not in our catalog.");
+        return;
+    }
+
+    public void printAvailableBooks()
+    {
+        for (int i = 0; i < books.length; i++)
+        {
+            if (books[i] != null && !books[i].isBorrowed())
+            {
+                System.out.println(books[i].getTitle());
+            }
+        }
+        if (nextIndex == 0)
+        {
+            System.out.println("No book in catalog");
+        }
+    }
+
+    public void returnBook(String title)
+    {
+        for (int i = 0; i < books.length; i++)
+        {
+            if (books[i].getTitle().equals(title) && books[i].isBorrowed())
+            {
+                books[i].returned();
+                System.out.println("You successfully returned " + title);
+            }
+        }
+    }
 
     public static void main(String[] args) {
         // Create two libraries
