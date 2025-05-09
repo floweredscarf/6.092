@@ -10,7 +10,7 @@ public class DrawGraphics {
         Rectangle box = new Rectangle(15, 20, Color.RED);
         movingSprites.add(new Bouncer(100, 170, box));
         movingSprites.get(0).setMovementVector(3, 1);
-        Rectangle box1 = new Rectangle(15, 20, Color.BLUE);
+        RoundRectangle box1 = new RoundRectangle(15, 20, 5, 5, Color.BLUE);
         movingSprites.add(new Bouncer(100, 170, box1));
         movingSprites.get(1).setMovementVector(-3, 1);
     }
