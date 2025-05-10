@@ -13,9 +13,9 @@ public class DrawGraphics {
         movers.add(new StraightMover(100, 170, box));
         movers.get(1).setMovementVector(3, -1);
         RoundRectangle box1 = new RoundRectangle(15, 20, 5, 5, Color.BLUE);
-        movers.add(new Bouncer(100, 170, box1));
+        movers.add(new Bouncer(200, 170, box1));
         movers.get(2).setMovementVector(-3, 1);
-        movers.add(new StraightMover(100, 170, box1));
+        movers.add(new StraightMover(200, 170, box1));
         movers.get(3).setMovementVector(-3, -1);
     }
 
