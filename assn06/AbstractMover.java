@@ -9,11 +9,11 @@ public abstract class AbstractMover implements Mover {
     protected int yDirection;
     protected Sprite sprite;
 
-    public AbstractMover(int startX, int startY, Sprite spirte)
+    public AbstractMover(int startX, int startY, Sprite sprite)
     {
         x = startX;
         y = startY;
-        this.sprite = spirte;
+        this.sprite = sprite;
     }
 
     public void setMovementVector(int xIncrement, int yIncrement)
