@@ -1,3 +1,5 @@
+package assn06;
+
 import java.awt.Color;
 import java.awt.Graphics;
 

@@ -1,3 +1,5 @@
+package assn06;
+
 import java.awt.Graphics;
 
 public abstract class AbstractMover implements Mover {
