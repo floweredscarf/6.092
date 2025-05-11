@@ -8,7 +8,7 @@ public class StraightMover implements Mover{
     private int yDirection;
     private Sprite sprite;
 
-    /** Create a Bouncer that positions sprite at (startX, startY). */
+    /** Create a StraightMover that positions sprite at (startX, startY). */
     public StraightMover(int startX, int startY, Sprite sprite) {
         x = startX;
         y = startY;
