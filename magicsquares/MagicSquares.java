@@ -3,6 +3,8 @@ package magicsquares;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MagicSquares {
     public static boolean testMagic(String pathName) throws IOException {
@@ -11,6 +13,8 @@ public class MagicSquares {
 
         boolean isMagic = true;
         int lastSum = -1;
+
+        List<List<Integer>> square = new ArrayList<>();
         
         // For each line in the file ...
         String line;
@@ -20,11 +24,18 @@ public class MagicSquares {
             {
                 continue;
             }
+
+            List<Integer> row = new ArrayList<>();
+
             String[] parts = line.split("\t");
             int sum = 0;
             for (String part : parts) {
-                sum += Integer.parseInt(part);
+                int num = Integer.parseInt(part);
+                sum += num;
+                row.add(num);
             }
+
+            square.add(row);
 
             if (lastSum == -1) {
                 // If this is the first row, remember the sum
@@ -34,6 +45,41 @@ public class MagicSquares {
                 isMagic = false;
                 break;
             }
+        }
+
+        column:
+        for (int j = 0; j < square.size(); j++)
+        {
+            int columnSum = 0;
+            for (int i = 0; i < square.size(); i++)
+            {
+                columnSum += square.get(i).get(j);
+            }
+            if (columnSum != lastSum)
+            {
+                isMagic = false;
+                break column;
+            }
+        }
+
+        int mainDiagonalSum = 0;
+        for (int i = 0; i < square.size(); i++)
+        {
+            mainDiagonalSum += square.get(i).get(i);
+        }
+        if (mainDiagonalSum != lastSum)
+        {
+            isMagic = false;
+        }
+
+        int antiDiagonalSum = 0;
+        for (int i = 0; i < square.size(); i++)
+        {
+            antiDiagonalSum += square.get(i).get(square.size() - 1 - i);
+        }
+        if (antiDiagonalSum != lastSum)
+        {
+            isMagic = false;
         }
         
         reader.close();
