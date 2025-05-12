@@ -18,6 +18,10 @@ public class MagicSquares {
         String line;
         while ((line = reader.readLine()) != null) {
             // ... sum each row of numbers
+            if (line.trim().isEmpty())
+            {
+                continue;
+            }
             String[] parts = line.split("\t");
             int sum = 0;
             for (String part : parts) {
