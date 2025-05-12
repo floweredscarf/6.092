@@ -39,7 +39,7 @@ public class MagicSquares {
     }
 
     public static void main(String[] args) throws IOException {
-        String[] fileNames = { "Mercury.txt", "Luna.txt" };
+        String[] fileNames = { "magicsquares/Mercury.txt", "magicsquares/Luna.txt" };
         for (String fileName : fileNames) {
             System.out.println(fileName + " is magic? " + testMagic(fileName));
         }
