@@ -27,7 +27,7 @@ public class MagicSquares {
 
             List<Integer> row = new ArrayList<>();
 
-            String[] parts = line.split("\t");
+            String[] parts = line.split("\\s+");
             int sum = 0;
             try
             {
