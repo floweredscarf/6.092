@@ -29,10 +29,19 @@ public class MagicSquares {
 
             String[] parts = line.split("\t");
             int sum = 0;
-            for (String part : parts) {
-                int num = Integer.parseInt(part);
-                sum += num;
-                row.add(num);
+            try
+            {
+                for (String part : parts)
+                {
+                    int num = Integer.parseInt(part);
+                    sum += num;
+                    row.add(num);
+                }
+            } catch (NumberFormatException err)
+            {
+                System.err.println("NumberFormatException on line:\n" + line + "\n" + err.getMessage());
+                isMagic = false;
+                break;
             }
 
             square.add(row);
