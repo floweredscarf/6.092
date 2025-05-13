@@ -56,7 +56,6 @@ public class MagicSquares {
             }
         }
 
-        column:
         for (int j = 0; j < square.size(); j++)
         {
             int columnSum = 0;
@@ -67,7 +66,7 @@ public class MagicSquares {
             if (columnSum != lastSum)
             {
                 isMagic = false;
-                break column;
+                break;
             }
         }
 
